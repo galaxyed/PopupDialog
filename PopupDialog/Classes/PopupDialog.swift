@@ -40,6 +40,9 @@ final public class PopupDialog: UIViewController {
     
     /// Width for iPad displays
     fileprivate let preferredWidth: CGFloat
+    
+    /// Width for phone displays
+    fileprivate let phoneWidth: CGFloat
 
     /// The completion handler
     fileprivate var completion: (() -> Void)?
@@ -97,6 +100,7 @@ final public class PopupDialog: UIViewController {
                 buttonAlignment: NSLayoutConstraint.Axis = .vertical,
                 transitionStyle: PopupDialogTransitionStyle = .bounceUp,
                 preferredWidth: CGFloat = 340,
+                phoneWidth: CGFloat = 340,
                 tapGestureDismissal: Bool = true,
                 panGestureDismissal: Bool = true,
                 hideStatusBar: Bool = false,
@@ -113,6 +117,7 @@ final public class PopupDialog: UIViewController {
                   buttonAlignment: buttonAlignment,
                   transitionStyle: transitionStyle,
                   preferredWidth: preferredWidth,
+                  phoneWidth: phoneWidth,
                   tapGestureDismissal: tapGestureDismissal,
                   panGestureDismissal: panGestureDismissal,
                   hideStatusBar: hideStatusBar,
@@ -138,6 +143,7 @@ final public class PopupDialog: UIViewController {
         buttonAlignment: NSLayoutConstraint.Axis = .vertical,
         transitionStyle: PopupDialogTransitionStyle = .bounceUp,
         preferredWidth: CGFloat = 340,
+        phoneWidth: CGFloat = 340,
         tapGestureDismissal: Bool = true,
         panGestureDismissal: Bool = true,
         hideStatusBar: Bool = false,
@@ -145,6 +151,7 @@ final public class PopupDialog: UIViewController {
 
         self.viewController = viewController
         self.preferredWidth = preferredWidth
+        self.phoneWidth = phoneWidth
         self.hideStatusBar = hideStatusBar
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
@@ -191,7 +198,7 @@ final public class PopupDialog: UIViewController {
 
     /// Replaces controller view with popup view
     public override func loadView() {
-        view = PopupDialogContainerView(frame: UIScreen.main.bounds, preferredWidth: preferredWidth)
+        view = PopupDialogContainerView(frame: UIScreen.main.bounds, preferredWidth: preferredWidth, phoneWidth: phoneWidth)
     }
 
     public override func viewWillAppear(_ animated: Bool) {
