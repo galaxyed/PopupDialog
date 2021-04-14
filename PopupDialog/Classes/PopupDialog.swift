@@ -36,7 +36,7 @@ final public class PopupDialog: UIViewController {
     
     /// StatusBar display related
     fileprivate let hideStatusBar: Bool
-    fileprivate var statusBarShouldBeHidden: Bool = false
+    fileprivate var statusBarShouldBeHidden: Bool = true
     
     /// Width for iPad displays
     fileprivate let preferredWidth: CGFloat
